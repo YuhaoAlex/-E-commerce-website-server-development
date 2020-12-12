@@ -17,5 +17,19 @@
      ****虚拟机内能访问，本地不行****：虚拟机设置防火墙端口 8080 open， 本地访问 192.168.1.59:8080
      
      
-     
+### Develop:
+
+#### 1. vsftpd:
+
+• commands:  
+    vim /etc/vsftpd/vsftpd.conf     
+    service vsftpd restart    
+    useradd ftpuser -d /ftpfile -s /sbin/nologin   -----添加用户    
+    passwd ftpuser   ----修改用户密码      
+    userdel ftpuser  ----删除用户 
+    id ftpuser      -----查询用户     
+    whereis vsftp    
+    vim /etc/sysconfig/iptables    
+    service iptables restart      
+
     
