@@ -47,8 +47,39 @@ chkconfig mysqld on  #mysql自启动
 
 chkconfig --list mysqld  #查看自启动
 
+-----------------------------------------------------------  
 #### errors
 >MySQL Daemon failed to start.
->Starting mysqld: 
+>Starting mysqld:   
+
+cd /var/log -> vim mysqld.log
+
+>/usr/libexec/mysqld: Table 'mysql.plugin' doesn't exist
+>201213 15:10:42 [ERROR] Can't open the mysql.plugin table. Please run mysql_upgrade to create it.
+>201213 15:10:42  InnoDB: Initializing buffer pool, size = 8.0M
+>201213 15:10:42  InnoDB: Completed initialization of buffer pool
+>InnoDB: Log scan progressed past the checkpoint lsn 0 37356
+
+mysql_upgrade
+
+>Looking for 'mysql' as: mysql
+>Looking for 'mysqlcheck' as: mysqlcheck
+>Running 'mysqlcheck with default connection arguments
+>mysqlcheck: Got error: 2002: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) when trying to connect
+>FATAL ERROR: Upgrade failed
+
+cd /var/lib/mysql 发现没有 mysql.sock
+
+查找https://blog.csdn.net/FrankieHello/article/details/78304092
+
+>mysql> use mysql;  
+>mysql> update user set password=password("你的新密码") where user="root";  
+>mysql> flush privileges;  
+>mysql> quit  
+
+service mysqld restart -> 成功
+-----------------------------------------------------------    
+
+
 
 
