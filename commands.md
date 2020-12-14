@@ -181,7 +181,18 @@ ps -ef|grep nginx        #查看进程
 
 kill -HUP 【Nginx主进程号】     #平滑重启
 
+lsof -i :port  #查看端口状态
+
 ### Nginx虚拟域名配置及测试验证
+
+cd /usr/local/nginx/conf/vhost/ -> vim learning.happymmall.com.conf -> proxy_pass http://192.168.1.59:8080;
+
+cd .../nginx/sbin -> nginx -s reload
+
+打开www.imooc.com 即可
+
+
+
 
 ### 配置linux域名
 
@@ -189,7 +200,11 @@ sudo vim /etc/hosts
 添加对应的域名即ip  
 ![image](https://github.com/YuhaoAlex/-E-commerce-website-server-development/blob/main/images/WX20201214-085007%402x.png)
  
+ 
+ 
+## apache-tomcat-7.0.73
 
+cd /home/yuhao/Desktop/apache-tomcat-7.0.73/bin ->./startup.sh
 
 
 
