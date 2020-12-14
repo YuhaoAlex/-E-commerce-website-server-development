@@ -75,10 +75,74 @@ cd /var/lib/mysql 发现没有 mysql.sock
 >mysql> use mysql;  
 >mysql> update user set password=password("你的新密码") where user="root";  
 >mysql> flush privileges;  
->mysql> quit  
+>mysql> quit   
 
 service mysqld restart -> 成功
------------------------------------------------------------    
+
+-----------------------------------------------------------  
+
+select user, host, password from mysql.user;  
+
+set password for root@localhost=password('950723')   #更新用户密码
+
+delete from mysql.user where user='';
+
+flush privileegs;   #刷新
+
+create database `mmall` default character set utf8 COLLATE utf8_general_ci;  #创建数据库
+
+grant all privileges on mmall.* to yuhao@localhost identified by '950723';   #赋予用户管理数据库权限
+
+#### 导入数据库
+
+exit-> cd developer -> wget http://learning.happymmall.com/mmall.sql     #下载数据库文件
+
+mysql -u root -p
+
+use mmall -> source /developer/mmall.sql     #导入数据库
+
+select * from mmall_user\G;    #\G 格式化
+
+
+## git
+
+mkdir /setup -> cd setup
+
+wget http://learning.happymmall.com/git/git-v2.8.0.tar.gz
+
+sudo yum -y install zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils- MakeMaker     #git 安装依赖
+
+tar -zxvf git-v2.8.0.tar.gz 
+
+cd git-2.8.0/
+
+make
+
+make prefix=/usr/local/git all
+
+sudo make prefix=/usr/local/git install
+
+git version -> no such .... -> sudo vim /etc/profile -> PATH 末尾加/usr/local/git/bin: -> source /etc/profile -> git --version   #在path中配置git的路径
+
+git config --global user.name "imooc"     
+git config --global user.email "imooc@163.com"    
+git config --global core.autocrlf false       #ignore windows, linux 的换行符转换   
+git config --global core.quotepath off        #避免中文乱码   
+git config --global gui.encoding utf-8        #配置gui   
+ssh-keygen -t rsa -C "imooccode@163.com"      #ssh
+
+eval `ssh-agent`  
+ssh-add ~/.ssh/id_rsa   
+ 
+cat ~/.ssh/id_rsa.pub    #获取公共密钥  
+>ssh-rsaAAAAB3NzaC1yc2EAAAABIwAAAQEAqLIEDoOuJBcxkp6lhTof7phT1ksE34IJHJGVkZfhJWD5FFkzvYR+jqBx1yh6ECfvWpSUGOXTyRfQLXBhgBAeXdwqO3PZ85Zmuq2SCE6CDhowirmkAFUl9kCxNCdukDK/whYu1CrctPOS0tzFXeaz7MI/zJuZ/GB83CxhYa6xrhcQUl/awXq613p44sBxcQ735ocN3uiEOnutJ9SoaCLMC/4SN9pnlb3PYcPI+GSgVRmIjCw2w0D7pzoSU8K7rk5WkmYbW2ly8eeMT+6l2/0W8mTBC1E4xAwoqG6t95X0090Vj5CHfOHKTR1hYTfupWR2YF8eHwPadQB828hC3jFhgw== imooccode@163.com
+
+git-> addnew ssh key-> 把公钥粘贴 -> 完成
+
+
+
+
+
 
 
 
