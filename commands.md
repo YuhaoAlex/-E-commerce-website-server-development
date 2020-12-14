@@ -1,3 +1,5 @@
+chmod -R 777 /var/home/userid/cc     #文件夹权限
+
 passwd username  #用户密码
  
 sudo vim /etc/sudoers -> /root -> noh  #设置用户root 权限  
