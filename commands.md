@@ -140,6 +140,71 @@ cat ~/.ssh/id_rsa.pub    #获取公共密钥
 git-> addnew ssh key-> 把公钥粘贴 -> 完成
 
 
+## Firewall
+
+cd /etc/sysconfig/  -> 只有iptables.config -> iptables -P OUTPUT ACCEPPT（随便写一条规则） -> service iptables save
+
+wget http://learning.happymmall.com/env/iptables 
+
+vim iptables: 注释掉3306 端口， 注释8080端口， 5005端口（tomcat远程debug端口）  
+              开放80端口--网站访问
+              
+service iptables restart 
+
+## 自动化脚本
+
+cd /developer -> wget http://learning.happymmall.com/deploy/deploy.sh -> vim deploy.sh -> 
+
+
+
+# 详解---开发
+
+## Nginx
+
+•可直接支持Rails 和PHP 程序  
+•HTTP反向代理服务器  
+•负载均衡服务器  
+•邮件代理服务器  
+•帮助前端实现动静分离
+
+### 命令  
+
+/nginx/sbin/nginx -t   #测试配置文件 
+
+/nginx/sbin/nginx     #启动
+
+/nginx/sbin/nginx -s stop 或者  nginx -s quit         #停止命令
+
+/nginx/sbin/nginx -s reload        #重启
+
+ps -ef|grep nginx        #查看进程
+
+kill -HUP 【Nginx主进程号】     #平滑重启
+
+### Nginx虚拟域名配置及测试验证
+
+### 配置linux域名
+
+sudo vim /etc/hosts  
+添加对应的域名即ip  
+![image](https://github.com/YuhaoAlex/-E-commerce-website-server-development/blob/main/images/WX20201214-085007%402x.png)
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
