@@ -210,8 +210,20 @@ cd /home/yuhao/Desktop/apache-tomcat-7.0.73/bin ->./startup.sh
 
 
 
+## git
 
+git config --global user.name "YuhaoAlex"         #git 用户名  
+git config --global user.email "julyzyh@gmail.com"    #邮箱  
+git config --global core.autocrlf false           #让git不要管windows/unix换行符转换的事情   
+git config --global gui.encoding utf-8            #避免gui中的中文乱码  
+git config --global core.quotepath off           #避免status 显示的中文文件名乱码  
+  
+ssh-keygen -t rsa -C "julyzyh@gmail.com"        #生成ssh key pair
+ssh-add ~/.ssh/id_rsa                           #添加密钥  
+cat ~/.ssh/id_rsa.pub                           #显示密钥  
+到github 里添加密钥 
 
+git checkout  [-r] #查看当前分支  
 
 
 
